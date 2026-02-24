@@ -1,0 +1,269 @@
+﻿<mah:MetroWindow x:Class="CMW.CalibrationWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                 xmlns:command="http://www.galasoft.ch/mvvmlight"
+                 xmlns:system="clr-namespace:System;assembly=mscorlib"
+                 xmlns:extensions="clr-namespace:CMW.Common.Utilities;assembly=CMW.Common.Utilities"
+                 ResizeMode="NoResize" SizeToContent="WidthAndHeight"  WindowStartupLocation="CenterScreen"
+                 ShowInTaskbar="False"  ShowCloseButton="False" ShowTitleBar="False"
+                 Background="{StaticResource TabItem.Static.Background}" 
+                 NonActiveBorderBrush="{StaticResource newBlue}"
+                 WindowTitleBrush="{StaticResource newBlue}"
+                 BorderBrush="{StaticResource newBlue}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="PreviewKeyDown">
+            <command:EventToCommand Command="{Binding PreviewKeyDownEventCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <mah:MetroWindow.Resources>
+        <system:Double x:Key="SmallFontSize">12</system:Double>
+        <system:Double x:Key="MiddleFontSize">14</system:Double>
+        <system:Double x:Key="BigFontSize">16</system:Double>
+        <SolidColorBrush x:Key="CalibrationMainBrush" Color="SlateGray"/>
+        <SolidColorBrush x:Key="SeparateLineBrush" Color="LightGray" />
+        <SolidColorBrush x:Key="ErrorInfoFrgBrush" Color="OrangeRed"/>
+        <SolidColorBrush x:Key="NotStartBrush" Color="DarkGray"/>
+        <SolidColorBrush x:Key="CompletedBrush" Color="LimeGreen"/>
+        <SolidColorBrush x:Key="FailedBrush" Color="OrangeRed"/>
+        <SolidColorBrush x:Key="CancelBrush" Color="Brown"/>
+        <Style TargetType="{x:Type Path}">
+            <Setter Property="Width" Value="20"></Setter>
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+    </mah:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- 标题栏 -->
+        <Grid Background="{StaticResource newBlue}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding WindowTitle}" Foreground="White" FontSize="{StaticResource MiddleFontSize}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <Border Grid.Column="1" Visibility="{Binding CloseVisibility}" Width="70"  Style="{StaticResource diyBtnCarHand}"
+                    HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,0,1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <command:EventToCommand Command="{Binding CloseCommand}" PassEventArgsToCommand="True">
+                        </command:EventToCommand>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="[F3]" VerticalAlignment="Center" Foreground="White"/>
+                    <Path Data="{StaticResource GeometryNo}" Fill="White"
+                          Height="15" Width="15" Stretch="Uniform" VerticalAlignment="Center" Margin="10,0,10,1"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- 内容区域 -->
+        <ScrollViewer Grid.Row="1" x:Name="ScrollViewer" HorizontalScrollBarVisibility="Disabled" 
+                      VerticalScrollBarVisibility="Auto">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 检查连接状态 -->
+                <StackPanel>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding CheckConnection}" FontSize="{StaticResource BigFontSize}"
+                                   Foreground="#3f3f3f" FontWeight="Bold" Margin="10,20"/>
+                        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <Path Data="{StaticResource GeometryNotStarted}" Fill="{StaticResource NotStartBrush}" Visibility="{Binding CheckConnectionNotStartVisibility}"/>
+                            <mah:ProgressRing Height="14" Width="14" Visibility="{Binding CheckConnectionExecutingVisibility}"/>
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CheckConnectionCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CheckConnectionFailedVisibility}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <Rectangle Fill="{StaticResource SeparateLineBrush}" Height="2" RadiusX="1" RadiusY="1"/>
+                    <Grid Margin="40,5,0,0" Visibility="{Binding CheckConnectionSubItemVisibility}">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Path}">
+                                <Setter Property="Width" Value="14"></Setter>
+                                <Setter Property="Height" Value="14"></Setter>
+                                <Setter Property="Stretch" Value="Uniform"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CheckDetectorConnectionCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CheckDetectorConnectionFailedVisibility}"/>
+                        </StackPanel>
+                        <TextBlock Grid.Row="0" Grid.Column="1"  Text="{Binding CheckDetectorConnection}" FontSize="{StaticResource MiddleFontSize}" VerticalAlignment="Center" Margin="0,10"/>
+
+                        <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Fill="{StaticResource SeparateLineBrush}" Height="1" Margin="0,5,10,5"/>
+
+                        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CheckPLCConnectionCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CheckPLCConnectionFailedVisibility}"/>
+                        </StackPanel>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CheckPLCConnection}" FontSize="{StaticResource MiddleFontSize}" VerticalAlignment="Center" Margin="0,10"/>
+
+                        <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Fill="{StaticResource SeparateLineBrush}" Height="2" RadiusX="1" RadiusY="1" Margin="0,5,0,5"/>
+                    </Grid>
+                </StackPanel>
+
+                <!-- 启动数据采集 -->
+                <StackPanel Grid.Row="1">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding StartScan}" FontSize="{StaticResource BigFontSize}" Foreground="#3f3f3f" FontWeight="Bold" Margin="10,20"/>
+                        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <Path Data="{StaticResource GeometryNotStarted}" Fill="{StaticResource NotStartBrush}" Visibility="{Binding StartDataScanNotStartVisibility}"/>
+                            <mah:ProgressRing Height="14" Width="14" Visibility="{Binding StartDataScanExecutingVisibility}"/>
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding StartDataScanCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding StartDataScanFailedVisibility}"/>
+                            <Path Data="{StaticResource GeometryCancel}" Fill="{StaticResource CancelBrush}" Visibility="{Binding StartDataScanCancelVisibility}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <Rectangle Fill="{StaticResource SeparateLineBrush}" Height="2" RadiusX="1" RadiusY="1"/>
+                    <Grid Margin="40,5,0,0" Visibility="{Binding StartDataScanSubItemVisibility}">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Path}">
+                                <Setter Property="Width" Value="14"></Setter>
+                                <Setter Property="Height" Value="14"></Setter>
+                                <Setter Property="Stretch" Value="Uniform"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding StartDataScanSubItemCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding StartDataScanSubItemFailedVisibility}"/>
+                        </StackPanel>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding StartScan}" FontSize="{StaticResource MiddleFontSize}" VerticalAlignment="Center" Margin="0,10"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding DataScanErrorInfo}" FontSize="{StaticResource SmallFontSize}" Foreground="{StaticResource ErrorInfoFrgBrush}" Visibility="{Binding DataScanErrorInfoVisibility}" Margin="0,3"/>
+
+                        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Fill="{StaticResource SeparateLineBrush}" Height="1" Margin="0,5,10,5"/>
+                     </Grid>
+                </StackPanel>
+                <!-- 满度校正 -->
+                <StackPanel Grid.Row="2">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding AirCalibrate}" FontSize="{StaticResource BigFontSize}" Foreground="#3f3f3f" FontWeight="Bold" Margin="10,20"/>
+                        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <Path Data="{StaticResource GeometryNotStarted}" Fill="{StaticResource NotStartBrush}" Visibility="{Binding CalibrateAirNotStartVisibility}"/>
+                            <mah:ProgressRing Height="14" Width="14" Visibility="{Binding CalibrateAirExecutingVisibility}"/>
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CalibrateAirCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CalibrateAirFailedVisibility}"/>
+                            <Path Data="{StaticResource GeometryCancel}" Fill="{StaticResource CancelBrush}" Visibility="{Binding CalibrateAirCancelVisibility}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <Rectangle Fill="{StaticResource SeparateLineBrush}" Height="2" RadiusX="1" RadiusY="1"/>
+                    <Grid Margin="40,5,0,0" Visibility="{Binding CalibrateAirSubItemVisibility}">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Path}">
+                                <Setter Property="Width" Value="14"></Setter>
+                                <Setter Property="Height" Value="14"></Setter>
+                                <Setter Property="Stretch" Value="Uniform"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CalibrateDRAirCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CalibrateDRAirFailedVisibility}"/>
+                            <Path Data="{StaticResource GeometryCancel}" Fill="{StaticResource CancelBrush}" Visibility="{Binding CalibrateDRAirCancelVisibility}"/>
+                        </StackPanel>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding AirCalibrate}" FontSize="{StaticResource MiddleFontSize}" VerticalAlignment="Center" Margin="0,10"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CalAirErrorInfo}" FontSize="{StaticResource SmallFontSize}" Foreground="{StaticResource ErrorInfoFrgBrush}" Visibility="{Binding CalAirErrorInfoVisibility}" Margin="0,3"/>
+
+                        <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Fill="{StaticResource SeparateLineBrush}" Height="2" RadiusX="1" RadiusY="1" Margin="0,5,0,5"/>
+                    </Grid>
+                </StackPanel>
+                <!-- 本底校正 -->
+                <StackPanel Grid.Row="3">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding GroundCalibrate}" FontSize="{StaticResource BigFontSize}" Foreground="#3f3f3f" FontWeight="Bold" Margin="10,20"/>
+                        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <Path Data="{StaticResource GeometryNotStarted}" Fill="{StaticResource NotStartBrush}" Visibility="{Binding CalibrateGroundNotStartVisibility}"/>
+                            <mah:ProgressRing Height="14" Width="14" Visibility="{Binding CalibrateGroundExecutingVisibility}"/>
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CalibrateGroundCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CalibrateGroundFailedVisibility}"/>
+                            <Path Data="{StaticResource GeometryCancel}" Fill="{StaticResource CancelBrush}" Visibility="{Binding CalibrateGroundCancelVisibility}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <Rectangle Fill="{StaticResource SeparateLineBrush}" Height="2" RadiusX="1" RadiusY="1"/>
+                    <Grid Margin="40,5,0,0" Visibility="{Binding CalibrateGroundSubItemVisibility}">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Path}">
+                                <Setter Property="Width" Value="14"></Setter>
+                                <Setter Property="Height" Value="14"></Setter>
+                                <Setter Property="Stretch" Value="Uniform"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                            <Path Data="{StaticResource GeometryCompleted}" Fill="{StaticResource CompletedBrush}" Visibility="{Binding CalibrateDRGroundCompletedVisibility}"/>
+                            <Path Data="{StaticResource GeometryNo}" Fill="{StaticResource FailedBrush}" Visibility="{Binding CalibrateDRGroundFailedVisibility}"/>
+                            <Path Data="{StaticResource GeometryCancel}" Fill="{StaticResource CancelBrush}" Visibility="{Binding CalibrateDRGroundCancelVisibility}"/>
+                        </StackPanel>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding GroundCalibrate}" FontSize="{StaticResource MiddleFontSize}" VerticalAlignment="Center" Margin="0,10"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CalGroundErrorInfo}" FontSize="{StaticResource SmallFontSize}" Foreground="{StaticResource ErrorInfoFrgBrush}" Visibility="{Binding CalGroundErrorInfoVisibility}" Margin="0,3"/>
+
+                        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Fill="{StaticResource SeparateLineBrush}" Height="1" Margin="0,5,10,5"/>
+                    
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</mah:MetroWindow>

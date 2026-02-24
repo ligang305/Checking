@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="BGUserControl.SingleElectronicFence"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl"
+             mc:Ignorable="d" Height="90" Width="90">
+    <StackPanel Orientation="Vertical">
+        
+        <Border Width="30" Height="30" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center" BorderThickness="0">
+            <Image Width="30" Height="30">
+                <Image.Source>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                <GeometryDrawing Brush="{Binding ElectronicFenceAlarmFrg,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                     Geometry="F1 M1024,1024z M0,0z M982.22,585.165A475.136,475.136,0,0,1,585.166,987.29L585.166,1024 438.784,1024 438.784,987.29A475.085,475.085,0,0,1,41.728,585.114L0,585.114 0,438.886 43.469,438.886A475.34,475.34,0,0,1,438.784,48.794L438.784,0 585.114,0 585.114,48.947A475.443,475.443,0,0,1,980.48,438.784L1024,438.784 1024,585.114 982.22,585.114z M475.443,978.585L548.557,978.585 548.557,905.421 475.443,905.421 475.443,978.637z M45.363,475.444L45.363,548.558 118.579,548.558 118.579,475.444 45.363,475.444z M548.557,45.364L475.443,45.364 475.443,118.58 548.557,118.58 548.557,45.363z M581.837,122.779L581.837,162.919 442.163,162.919 442.163,122.88A401.869,401.869,0,0,0,117.453,442.368L162.663,442.368 162.663,582.093 115.558,582.093A401.613,401.613,0,0,0,442.163,913.306L442.163,861.542 581.837,861.542 581.837,913.254A401.715,401.715,0,0,0,908.39,582.093L861.338,582.093 861.338,442.419 906.548,442.419A401.92,401.92,0,0,0,581.836,122.88L581.836,122.829z M978.637,475.444L978.637,548.558 905.42,548.558 905.42,475.444 978.636,475.444z M284.416,512A227.533,227.533,0,1,1,739.482,512A227.533,227.533,0,0,1,284.416,512z" />
+                            </DrawingGroup>
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </Image.Source>
+            </Image>
+        </Border>
+
+        <Grid Width="60" Height="40" VerticalAlignment="Top">
+            <Border Width="60" Height="40"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center" BorderThickness="0">
+                <Image>
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                    <GeometryDrawing Brush="{Binding ElectronicFenceBattaryFrg,Mode=TwoWay}" Geometry="F1 M1024,1024z M0,0z M928,384L832,384 832,320C832,302.33,817.67,288,800,288L96,288C78.33,288,64,302.33,64,320L64,704C64,721.67,78.33,736,96,736L800,736C817.67,736,832,721.67,832,704L832,640 928,640C945.67,640,960,625.67,960,608L960,416C960,398.33,945.67,384,928,384z M768,672L128,672 128,352 768,352 768,672z M896,576L832,576 832,448 896,448 896,576z" />
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </Border>
+            <Label x:Name="Battary" 
+                   FontSize="10"
+                             HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                             VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                             Content="{Binding ElectronicFenceBattary}" ContentStringFormat="{}{0}%"
+                             Foreground="{Binding ElectronicFenceBattaryFrg,Mode=TwoWay}"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

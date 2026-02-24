@@ -1,0 +1,52 @@
+﻿<Window x:Class="CMW.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMW"
+        mc:Ignorable="d"
+        Title="Login"  WindowStartupLocation="CenterOwner">
+    <!--ResizeMode="NoResize"-->
+    <Window.Background>
+        <ImageBrush ImageSource="Properties/LoginBnackGroundCMW.png" Stretch="Fill"/>
+    </Window.Background>
+    <Grid>
+        <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Height="35" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="0,-4,0,0">
+            <Label.Content>
+                <StackPanel>
+                    <ComboBox x:Name="ddlLanguage" Style="{DynamicResource diyLanguageComboBox}" Width="150" VerticalAlignment="Stretch" HorizontalContentAlignment="Right"  Grid.Column="1" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </Label.Content>
+        </Label>
+        <Grid x:Name="MainContentGrid"  HorizontalAlignment="Center" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.02*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="1.5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="LoginLogon" Grid.Column="1" Grid.Row="1"   Width="600" Height="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Source="Properties/logo.png" Stretch="Uniform" />
+                <Label x:Name="LoginText"  Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily=" Microsoft YaHei"
+                   HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Content="Control Monitor Workstation" Foreground="White" FontSize="20" />
+            </Grid>
+         
+            <!--Width="561" Height="345"-->
+            <Label x:Name="LoginContent" Grid.Column="0" Grid.Row="2" Width="561"  Height="345" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                   HorizontalAlignment="Stretch"  VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Window>

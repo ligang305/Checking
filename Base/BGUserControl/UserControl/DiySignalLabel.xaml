@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="BGUserControl.DiySignalLabel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl"
+             mc:Ignorable="d" >
+    <Grid x:Name="SingleMainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblSignalName"   Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center" VerticalAlignment="Stretch"  Foreground="White" Background="#017CD1" FontSize="12px" FontFamily="MicrosoftYaHei" />
+        <Label x:Name="lblSignalValue"  Background="#C9E5FB"  Grid.Row="1" Visibility="Collapsed" Content="{Binding SignalModelValueProp}"
+               Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="#003A65" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <local:XrayIcon x:Name="XrayIcon" Grid.Row="1"  Grid.Column="0" Visibility="Collapsed"/>
+        <local:StartingDynamoIcon x:Name="StartingDynamoIcon" Grid.Row="1" Grid.Column="0" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

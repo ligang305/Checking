@@ -1,0 +1,46 @@
+﻿<Page x:Class="CMW.SystemMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      Background="white"
+      d:DesignHeight="300" d:DesignWidth="300" 
+      DataContext="{Binding Source={StaticResource Locator}, Path=SystemMenuPageVm}">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" IsTabStop="False">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="MainMenu" >
+                <RadioButton Command="{Binding NavigateToSecondPageCommand}" CommandParameter="SettingPage"
+                             Style="{StaticResource RadioMenuButtonStyle}"
+                        IsChecked="True">
+                    <StackPanel Orientation="Horizontal">
+                        <!--Source="{StaticResource Manual calibration}"-->
+                        <Image Stretch="Fill"
+                                                   VerticalAlignment="Center" 
+                                                   Width="{StaticResource MainMenuButtonImageSize}" 
+                                                   Height="{StaticResource MainMenuButtonImageSize}"/>
+                        <TextBlock Text="SettingSetting" Margin="10,0"
+                                   FontSize="{StaticResource SmallFontSize}" Foreground="{StaticResource defaultBlue}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Command="{Binding NavigateToSecondPageCommand}" CommandParameter="MonitorPage"
+                             Style="{StaticResource RadioMenuButtonStyle}"
+                        IsChecked="false">
+                    <StackPanel Orientation="Horizontal">
+                        <!--Source="{StaticResource Manual calibration}"-->
+                        <Image Stretch="Fill"
+                                                   VerticalAlignment="Center" 
+                                                   Width="{StaticResource MainMenuButtonImageSize}" 
+                                                   Height="{StaticResource MainMenuButtonImageSize}"/>
+                        <TextBlock Text="SettingSetting" Margin="10,0"
+                                   FontSize="{StaticResource SmallFontSize}" Foreground="{StaticResource defaultBlue}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

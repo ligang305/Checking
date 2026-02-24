@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="BGUserControl.PreviewScanImageCtl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl"  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:bgusercontrol="clr-namespace:BGUserControl;assembly=BGUserControl"
+             mc:Ignorable="d" >
+    <Grid>
+        <DockPanel x:Name="ScanImageDk"  HorizontalAlignment="Right" Panel.ZIndex ="90">
+            <Canvas  HorizontalAlignment="Left" ToolTip="{Binding ScanImageDoubleTipVisibsliy.DisplayName}" Width="30" Height="100"  VerticalAlignment="Center" >
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                  <i:InvokeCommandAction Command="{Binding DrawerDefectCommand}" />
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+                <local:DiyTextBlock Canvas.Top="15" Canvas.Left="12" Width="25" Height="90" DiyText="{Binding ScanImageDoubleTipVisibsliy.DisplayName}" Foreground="White" Panel.ZIndex="90" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Path Stroke="#00345c" StrokeThickness="2"  >
+                    <Path.Data>
+                        <GeometryGroup x:Name="ScanImageDkPath">
+                            <PathGeometry>
+                                <PathFigure StartPoint="30,0" IsClosed="True">
+                                    <LineSegment Point="10,10"></LineSegment>
+                                    <LineSegment Point="10,90"></LineSegment>
+                                    <LineSegment Point="30,100"></LineSegment>
+                                </PathFigure>
+                            </PathGeometry>
+                        </GeometryGroup>
+
+                    </Path.Data>
+                    <Path.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#00345c" Offset="0.25"></GradientStop>
+                            <GradientStop Color="#00345c" Offset="0.5"></GradientStop>
+                            <GradientStop Color="#00345c" Offset="0.75"></GradientStop>
+                            <GradientStop Color="#00345c" Offset="1"></GradientStop>
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+            </Canvas>
+            <StackPanel Orientation="Vertical" x:Name="bdScanImage"  HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,0,-310,0">
+                <Border x:Name="bdCanvas"    HorizontalAlignment="Stretch" Background="#014087" 
+                                        CornerRadius="5,5,0,0" BorderThickness="2,0,2,0" BorderBrush="#014087" Height="13" >
+                </Border>
+                <Border x:Name="bdlblSmallCarTimeImg"  HorizontalAlignment="Stretch" CornerRadius="0,0,2,2" 
+                                        BorderThickness="1,0,1,1" BorderBrush="#014087" Height="125" >
+                    <Border.InputBindings>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DoubleClickCommand}" />
+                    </Border.InputBindings>
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LeftDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding DoubleClickCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                    <local:ScanImage x:Name="lblSmallCarTimeImg" Width="279" Height="124" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Cursor="Hand" ToolTip="{Binding ScanImageVisibsliy.DisplayName}" />
+                </Border>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

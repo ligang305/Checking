@@ -1,0 +1,40 @@
+﻿<local:BaseWindows x:Class="BGUserControl.DataPager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl"
+             mc:Ignorable="d" MaxHeight="40" >
+    <Grid Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label x:Name="lblTotal" Content="{DynamicResource total}" VerticalContentAlignment="Center" />
+
+            <Label x:Name="lblEachPage" Content="{DynamicResource EachPage}"  VerticalContentAlignment="Center" />
+
+            <ComboBox  x:Name="cbxPageIndex"  Style="{DynamicResource stlComboBox}" HorizontalAlignment="Left" />
+
+
+            <Label x:Name="lblPageCount" VerticalContentAlignment="Center" />
+
+            <Border x:Name="btnLeft"  MaxWidth="65" Style="{DynamicResource diyBtnCarHand}" HorizontalAlignment="Left" MouseDown="btnLeft_MouseClick">
+                <Label x:Name="lblpre" Content="{DynamicResource pre}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Style="{DynamicResource diyLabel}" Foreground="#FFFFFF"/>
+            </Border>
+
+            <Border x:Name="btnRight"  MaxWidth="65" Style="{DynamicResource diyBtnCarHand}" HorizontalAlignment="Left" MouseDown="btnRight_MouseClick">
+                <Label x:Name="lblnext" Content="{DynamicResource next}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Style="{DynamicResource diyLabel}" Foreground="#FFFFFF"/>
+            </Border>
+
+            <Border Style="{DynamicResource diyBtnCarHand}"  MaxWidth="65" HorizontalAlignment="Left" MouseDown="btnRefresh_MouseClick">
+                <Label x:Name="lblRefresh" Content="{DynamicResource Refresh}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Style="{DynamicResource diyLabel}" Foreground="#FFFFFF"/>
+            </Border>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+                <Label x:Name="lblPageNum"  Content="{DynamicResource PageNum}"  VerticalContentAlignment="Center" />
+                <TextBox x:Name="txtJumpPage" Width="50" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" />
+                <Border Style="{DynamicResource diyBtnCarHand}"  MaxWidth="65" HorizontalAlignment="Left" MouseDown="btnJumpPage_MouseClick">
+                    <Label x:Name="lblgo" Content="{DynamicResource go}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Style="{DynamicResource diyLabel}" Foreground="#FFFFFF"/>
+                </Border>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</local:BaseWindows>

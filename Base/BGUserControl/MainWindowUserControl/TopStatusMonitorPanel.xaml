@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="BGUserControl.TopStatusMonitorPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl" 
+             xmlns:childrencontrol="clr-namespace:BGUserControl" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:bgusercontrol="clr-namespace:BGUserControl;assembly=BGUserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="122" d:DesignWidth="800">
+    <Grid>
+        <Grid.Resources>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="LightGray"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+        </Style>
+    </Grid.Resources>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="6.5*" />
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+    
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+    
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Margin="0,1,0,1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Label HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Center" >
+                    <Image Source="{Binding Logo.ImageLogo}" Stretch="Fill"/>
+                </Label>
+            </Grid>
+            <local:EquipmentModelCtl Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                              VerticalContentAlignment="Top" HorizontalContentAlignment="Center"/>
+            <local:EquipmentTypeCtl Grid.Column="0" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                              VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" >
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" >
+                <local:MainPageModulesButton x:Name="MainPage" Tag="MainPage" ImageSource="{Binding MainPage.ImageLogo}" ToolTip="{Binding MainPage.LabelText}" HorizontalAlignment="Left" Height="42"  Width="42" Margin="5,5,10.5,0" VerticalAlignment="Center"
+                                    Style="{DynamicResource diyCWMBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding MainPage.ModulesName}" />
+                <local:MainPageModulesButton  x:Name="CommonSettingModule" ImageSource="{Binding CommonSettingModule.ImageLogo}" Tag="CommonSettingModule" ToolTip="{Binding CommonSettingModule.LabelText}" HorizontalAlignment="Left" Height="42"  Width="42" 
+                                              Margin="5,5,5,0" VerticalAlignment="Center" Style="{DynamicResource diyCWMBtn}" 
+                                              Command="{Binding ShowModulesCommands}" CommandParameter="{Binding CommonSettingModule.ModulesName}"/>
+                <local:MainPageModulesButton x:Name="Modulesvehicle" Tag="Modulesvehicle" ImageSource="{Binding TraialImageMode.ImageLogo}" ToolTip="{Binding TraialImageMode.LabelText}" 
+                                             HorizontalAlignment="Left" Height="42"  Width="42" Margin="5,5,5,0" VerticalAlignment="Center" Style="{DynamicResource diyCWMBtn}"
+                                             Command="{Binding ShowModulesCommands}" CommandParameter="{Binding TraialImageMode.ModulesName}"/>
+                <local:MainPageModulesButton x:Name="SoftDetailsModules" ImageSource="{Binding SoftWareInfomation.ImageLogo}"  Tag="SoftDetailsModules" ToolTip="{Binding SoftWareInfomation.LabelText}" HorizontalAlignment="Left" Height="42"  Width="42" Margin="5,5,5,0" VerticalAlignment="Center"
+                                             Style="{DynamicResource diyCWMBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding SoftWareInfomation.ModulesName}" />
+                <local:MainPageModulesButton x:Name="RepirModules" ImageSource="{Binding RepirModules.ImageLogo}" Margin="5,5,5,0" Tag="RepirModules" ToolTip="{Binding RepirModules.LabelText}" HorizontalAlignment="Left" Height="42"  Width="42" VerticalAlignment="Center"
+                                             Style="{DynamicResource diyCWMBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding RepirModules.ModulesName}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0"  >
+                <local:DiyMainPageButton  x:Name="ScanConditionModule" Style="{Binding ScanConditionButtonStyle}" Tag="MainPageScanConditionModule" HorizontalContentAlignment="Center"  FontWeight="DemiBold"
+                                                          FontSize="{Binding fontSizeModel.small}" HorizontalAlignment="Left" Margin="10.5,0,10.5,11" VerticalAlignment="Bottom"
+                                 Width="106" Height="36" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding ScanConfitionModule.ModulesName}" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <Image  Width="16" Height="16"  Source="{Binding ScanConfitionModule.ImageLogo}"/>
+                        
+                        <Label x:Name="lblScanConditionModule" Content="{Binding ScanConfitionModule.LabelText}" Foreground="{Binding ScanConfitionModule.LabmForecolor}" FontSize="{Binding fontSizeModel.normal}"  Margin="-5,0,0,0"
+                                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" 
+                                       VerticalContentAlignment="Center" />
+                    </StackPanel>
+                </local:DiyMainPageButton>
+
+             
+
+
+                <local:DiyMainPageButton  x:Name="BSScanConditionModule" 
+                                          Tag="MainPageBSScanConditionModule" 
+                                          HorizontalContentAlignment="Center"  
+                                          FontWeight="DemiBold"
+                                          FontSize="{Binding fontSizeModel.normalMiddle}" 
+                                          Visibility="{Binding BSSetting.IsShow}"
+                                          HorizontalAlignment="Left" Margin="10.5,0,10.5,11" VerticalAlignment="Bottom"
+                  Width="106" Height="36"  Style="{DynamicResource diyCWMGreenBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding ScanBSConfitionModule.ModulesName}" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <Image  Width="16" Height="16"  Source="{Binding ScanBSConfitionModule.ImageLogo}"/>
+                        <!--Source="Image/扫描条件.png"-->
+                        <Label x:Name="lblBSScanConditionModule" Content="{Binding ScanBSConfitionModule.LabelText}" Foreground="{Binding ScanBSConfitionModule.LabmForecolor}" FontSize="{Binding fontSizeModel.normal}"  Margin="-5,0,0,0"
+                         HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" 
+                        VerticalContentAlignment="Center" />
+                    </StackPanel>
+                </local:DiyMainPageButton>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="4" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Center">
+                <local:DiyMainPageButton  x:Name="ControlModule" Tag="ControlModule"  Width="80" Height="80" ToolTip="{Binding ScanControlModule.LabelText}" BorderThickness="0" 
+                                                           Margin="10,0,0,0" Style="{DynamicResource diyBigCwmBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding ScanControlModule.ModulesName}">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image  Width="30" Height="30" Stretch="Fill" Margin="0,5,0,0" Source="{Binding ScanControlModule.ImageLogo}" /> 
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <Label x:Name="lblMonitor"  Content="{Binding ScanControlModule.LabelText}" FontWeight="DemiBold" FontSize="{Binding fontSizeModel.normalMiddle}" Foreground="WhiteSmoke" Margin="5,0,0,0" 
+                                               HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Stretch"
+                                               VerticalContentAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button.Content>
+                </local:DiyMainPageButton>
+
+                <local:DiyMainPageButton x:Name="SystemSetting" Tag="SystemSetting"  Width="80" Height="80"
+                                         ToolTip="{Binding SystemSetting.LabelText}" BorderThickness="0" Margin="10,0,0,0" 
+                                         Style="{DynamicResource diyBigCwmBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding SystemSetting.ModulesName}">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image  Width="30" Height="30" Margin="0,5,0,0" Stretch="Fill" Source="{Binding SystemSetting.ImageLogo}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label x:Name="lblSystemSetting" Content="{Binding SystemSetting.LabelText}" FontWeight="DemiBold" FontSize="{Binding fontSizeModel.normalMiddle}" Foreground="WhiteSmoke" Margin="5,0,0,0" 
+                                               HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button.Content>
+                </local:DiyMainPageButton>
+
+                <local:DiyMainPageButton x:Name="BSSystemSetting" Tag="BSSystemSetting" Visibility="{Binding BSSetting.IsShow}"  Width="80" Height="80"
+                           ToolTip="{Binding BSSetting.LabelText}" BorderThickness="0" Margin="10,0,0,0" 
+                           Style="{DynamicResource diyBigCwmBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding BSSetting.ModulesName}">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image  Width="30" Height="30" Margin="0,5,0,0" Stretch="Fill" Source="{Binding BSSetting.ImageLogo}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label x:Name="lblBSSetting" Content="{Binding BSSetting.LabelText}"  FontWeight="DemiBold" FontSize="{Binding fontSizeModel.normalMiddle}" Foreground="WhiteSmoke" Margin="5,0,0,0" 
+                                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button.Content>
+                </local:DiyMainPageButton>
+
+                <local:DiyMainPageButton x:Name="BSControlModule" Tag="BSControlModule" Visibility="{Binding BSControlModule.IsShow}"  Width="80" Height="80"
+                           ToolTip="{Binding BSControlModule.LabelText}" BorderThickness="0" Margin="10,0,0,0" 
+                           Style="{DynamicResource diyBigCwmBtn}" Command="{Binding ShowModulesCommands}" CommandParameter="{Binding BSControlModule.ModulesName}">
+                    <Button.Content>
+                        <StackPanel>
+                            <Image  Width="30" Height="30" Margin="0,5,0,0" Stretch="Fill" Source="{Binding BSControlModule.ImageLogo}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label x:Name="lblBSControlModule" Content="{Binding BSControlModule.LabelText}"  FontWeight="DemiBold" FontSize="{Binding fontSizeModel.normalMiddle}" Foreground="WhiteSmoke" Margin="5,0,0,0" 
+                                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Button.Content>
+                </local:DiyMainPageButton>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="0" Margin="5"
+                            Background="#004E87" CornerRadius="3" BorderThickness="1" BorderBrush="#3A8DB7">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="2" Grid.Row="0"  HorizontalAlignment="Stretch">
+                    <DockPanel  Grid.Column="0" LastChildFill="True" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <local:TimeCtl HorizontalAlignment="Left" Margin="0,2,0,0"
+                               VerticalAlignment="Stretch" VerticalContentAlignment="Center" FontFamily="ArialMT" HorizontalContentAlignment="Center" Grid.Column="1"/>
+                        <local:UserNameCtl HorizontalAlignment="Left" Margin="0,2,0,0"
+                               VerticalAlignment="Stretch" VerticalContentAlignment="Center" FontWeight="UltraBold"  HorizontalContentAlignment="Center" Grid.Column="1" Foreground="#96FFFE"/>
+
+                        <local:LanguageComboxCtl  HorizontalAlignment="Right" Height="35" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="0,0,0,0"/>
+                    </DockPanel>
+                </Grid>
+                <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="4">
+                    <local:EquipmentConnectStatusCtl Grid.Column="0"  Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Grid x:Name="doubleMode" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Margin="0,0,5,0">
+                    <local:StatusBar x:Name="statusBar" Margin="0,0,0,8"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Red" Grid.Column="3" Grid.Row="1" Grid.RowSpan="4" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

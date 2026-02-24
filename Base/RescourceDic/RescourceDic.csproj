@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C45BED8E-9AFA-456B-B58C-3FD78FDF1A90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RescourceDic</RootNamespace>
+    <AssemblyName>RescourceDic</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\CMW_OUTPUT\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\CMW_OUTPUT\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.4.4.0\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.2.4.9\lib\net46\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DiyEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="RescourceControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RescourceColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RescourceImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\button1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\button1_press.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\button2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\button3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\button3_press.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\checkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\CMW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\快检.png" />
+    <Resource Include="Image\button3.png" />
+    <Content Include="Properties\Left.svg" />
+    <Content Include="Properties\Right.svg" />
+    <Content Include="Properties\Stop.svg" />
+    <Resource Include="Properties\用户图标.png" />
+    <Resource Include="Properties\系统条件.png" />
+    <Resource Include="Properties\系统锁.png" />
+    <Resource Include="Properties\维护.png" />
+    <Resource Include="Properties\扫描预览.png" />
+    <Resource Include="Properties\扫描系列.png" />
+    <Resource Include="Properties\扫描条件.png" />
+    <Resource Include="Properties\控制.png" />
+    <Resource Include="Properties\监测.png" />
+    <Resource Include="Properties\关机.png" />
+    <Resource Include="Properties\关闭.png" />
+    <Resource Include="Properties\故障复位.png" />
+    <Resource Include="Properties\故障.png" />
+    <Resource Include="Properties\set.png" />
+    <Resource Include="Properties\safelock.png" />
+    <Resource Include="Properties\main.png" />
+    <Resource Include="Properties\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BGCommonOperation\CMW.Common.Utilities.csproj">
+      <Project>{27444610-0930-4f50-a25b-4aeb4b0f7e2c}</Project>
+      <Name>CMW.Common.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGModel\BGModel.csproj">
+      <Project>{0ca06051-36e0-44a8-8dd4-048bd3bc4096}</Project>
+      <Name>BGModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGUserControl\BGUserControl.csproj">
+      <Project>{5f945592-982a-4256-bffa-4ff57c1fc0a5}</Project>
+      <Name>BGUserControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

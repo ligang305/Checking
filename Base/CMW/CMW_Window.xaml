@@ -1,0 +1,70 @@
+﻿<mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" 
+                  xmlns:exebasemodules="clr-namespace:ExeBaseModules;assembly=ExeBaseModules" 
+                  x:Class="CMW.CMW_MainModule"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                xmlns:diyControl="clr-namespace:BGUserControl;assembly=BGUserControl"
+                xmlns:local="clr-namespace:CMW" xmlns:command="http://www.galasoft.ch/mvvmlight"
+                xmlns:mainwindowusercontrol="clr-namespace:BGUserControl.MainWindowUserControl;assembly=BGUserControl"
+                DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+                ShowTitleBar="false"
+                ShowCloseButton="False"
+                mc:Ignorable="d">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="KeyDown">
+            <command:EventToCommand Command="{Binding KeyDownCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="PreviewKeyDown">
+            <command:EventToCommand Command="{Binding PreviewKeyDownCommand}" PassEventArgsToCommand="True"></command:EventToCommand>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="PreviewKeyUp">
+            <command:EventToCommand Command="{Binding PreviewKeyUpCommand}" PassEventArgsToCommand="True"></command:EventToCommand>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="white" x:Name="mainGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox x:Name="MainViewBox" Stretch="Fill" Grid.Column="0"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid x:Name="MainWindowGrid" Background="#FFFFFF" Height="1080" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="BorderBrush" Value="LightGray"></Setter>
+                        <Setter Property="BorderThickness" Value="1"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="113" />
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="124"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="{DynamicResource MainTheme}">
+                    <diyControl:TopStatusMonitorPanel  x:Name="topPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                </Grid>
+                <!--DataSource="{Binding StatusBarStatus,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DataSource="{Binding EnergyStopPoints,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                                     RayBackgroundImage ="{Binding RayImageSource,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                     PointsDataSource ="{Binding RayPoints,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                     MainPageImageBackgroundImage ="{Binding MainImagePath,Mode=TwoWay}"-->
+                <diyControl:CenterStatusControlPanel x:Name="centerPanel" Grid.Row="1"
+                                                 VerticalAlignment="Stretch" Panel.ZIndex="998" />
+                <GridSplitter Height="5" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"></GridSplitter>
+
+
+                <diyControl:BottomLogsPanel Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Grid>
+        </Viewbox>
+        
+    </Grid>
+</mah:MetroWindow>

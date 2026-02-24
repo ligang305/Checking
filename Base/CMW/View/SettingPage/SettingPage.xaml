@@ -1,0 +1,29 @@
+﻿<Page x:Class="CMW.SettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      DataContext="{Binding SettingPageVm,Source={StaticResource Locator}}">
+    <Page.Resources>
+        <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Gray"/>
+        </Style>
+        <Style x:Key="ButtonStyle" BasedOn="{StaticResource MahApps.Styles.Button.Flat}" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TabControl x:Name="DiyTabControl" Style="{StaticResource DiyTabControl}"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="BGUserControl.DrawerUploadListViewCtl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:bgusercontrol="clr-namespace:BGUserControl;assembly=BGUserControl"
+             mc:Ignorable="d" >
+    <Grid>
+        <DockPanel x:Name="lvDock"  HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Canvas HorizontalAlignment="Left" ToolTip="{Binding ListViewVisibsliy.DisplayName}" Width="30" Height="100"  VerticalAlignment="Center" Margin="0,-300,0,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding DrawerDeffectCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <local:DiyTextBlock Canvas.Top="30" Canvas.Left="12" Width="25" Height="100" DiyText="{Binding ListViewVisibsliy.DisplayName}" Foreground="White" Panel.ZIndex="90" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <Path Stroke="#00345c" StrokeThickness="2"  >
+                    <Path.Data>
+                        <GeometryGroup x:Name="TName">
+                            <PathGeometry>
+                                <PathFigure StartPoint="30,0" IsClosed="True">
+                                    <LineSegment Point="5,30"></LineSegment>
+                                    <LineSegment Point="5,100"></LineSegment>
+                                    <LineSegment Point="30,130"></LineSegment>
+                                </PathFigure>
+                            </PathGeometry>
+                        </GeometryGroup>
+
+                    </Path.Data>
+                    <Path.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#00345c" Offset="0.25"></GradientStop>
+                            <GradientStop Color="#00345c" Offset="0.5"></GradientStop>
+                            <GradientStop Color="#00345c" Offset="0.75"></GradientStop>
+                            <GradientStop Color="#00345c" Offset="1"></GradientStop>
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+            </Canvas>
+            <local:DiyUploadListView x:Name="DiyImage" Height="400" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,-300,-450,0" />
+        </DockPanel>
+    </Grid>
+</UserControl>

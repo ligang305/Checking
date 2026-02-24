@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="BGUserControl.MainWindowUserControl.BS2000Panel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl.MainWindowUserControl" xmlns:bs2000="clr-namespace:BGUserControl.MainWindowUserControl.ChildrenControl.BS.BS2000" xmlns:bgusercontrol="clr-namespace:BGUserControl"
+             mc:Ignorable="d" >
+    <Grid x:Name="BS2000" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Background="#004E87" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
+            <!--<bgusercontrol:DiyStatusLabel x:Name="lbl_BSPlcConnection" Height="100"
+                                      LabelText="{Binding PlcConnection.LabelText}" 
+                                      LabmForecolor="{Binding PlcConnection.LabmForecolor}" 
+                                      FontSize="{Binding fontSizeModel.normalMiddle}" 
+                                      Visibility="{Binding PlcConnection.IsShow}"
+                                      HorizontalAlignment="Left" Margin="5,2,0,0"
+                                      VerticalAlignment="Stretch" VerticalContentAlignment="Center" 
+                                      FontWeight="UltraBold"  HorizontalContentAlignment="Center" DockPanel.Dock="Left" />-->
+            <bgusercontrol:DiyStatusLabel x:Name="lbl_BSImageUpload" Height="100"
+                                      LabelText="{Binding BSImageUploadStatus.LabelText}" 
+                                      LabmForecolor="{Binding BSImageUploadStatus.LabmForecolor}" 
+                                      FontSize="{Binding BSImageUploadStatus.normalMiddle}" 
+                                      Visibility="{Binding BSImageUploadStatus.IsShow}"
+                                      HorizontalAlignment="Left" Margin="5,2,0,0"
+                                      VerticalAlignment="Stretch" VerticalContentAlignment="Center" 
+                                      FontWeight="UltraBold"  HorizontalContentAlignment="Center" DockPanel.Dock="Right" />
+        </DockPanel>
+       
+    </Grid>
+</UserControl>

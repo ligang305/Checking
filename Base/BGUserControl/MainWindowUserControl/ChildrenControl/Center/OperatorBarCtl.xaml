@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="BGUserControl.OperatorBarCtl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl" xmlns:bgusercontrol="clr-namespace:BGUserControl;assembly=BGUserControl"
+             mc:Ignorable="d" >
+    <Grid>
+        <Border Grid.Column="0" x:Name="opreationButton"  Grid.ColumnSpan="5" Style="{DynamicResource diyBorderStyle}" Grid.Row="1" Padding="0,0,0,0" 
+                        Height="35" Width="300" HorizontalAlignment="Left"  CornerRadius="4" Margin="13,15,43,30" >
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Height="35" HorizontalAlignment="Stretch" >
+                <local:DiyMainPageButton  x:Name="SingleClick_HictchResetModule" Tag="HictchResetModule" Style="{DynamicResource diyBgOperationBtn}"
+                                          Command="{Binding OperatorCommand}" CommandParameter="{Binding errorSet.ModulesName}">
+                    <DockPanel Style="{DynamicResource diyBgWrapPanel}" >
+                        <Image Style="{DynamicResource diyImageStyle}" Source="{Binding errorSet.ImageLogo}" />
+                        <Label x:Name="lblErrorReset" Content="{Binding errorSet.LabelText}" FontSize="{Binding fontSizeModel.normal}" Style="{DynamicResource diylblStatusStyle}" />
+                    </DockPanel>
+                </local:DiyMainPageButton>
+
+                <local:DiyMainPageButton  x:Name="SingleClick_Calicabration_One" Tag="SystemLockModule" Style="{DynamicResource diyBgOperationBtn}"
+                                          Command="{Binding OperatorCommand}" CommandParameter="{Binding systemLock.ModulesName}">
+                    <DockPanel Style="{DynamicResource diyBgWrapPanel}" >
+                        <Image Style="{DynamicResource diyImageStyle}" Source="{Binding systemLock.ImageLogo}" />
+                        <Label x:Name="lblSystemLock" Content="{Binding systemLock.LabelText}" Style="{DynamicResource diylblStatusStyle}" FontSize="{Binding fontSizeModel.normal}" />
+                    </DockPanel>
+                </local:DiyMainPageButton>
+
+                <local:DiyMainPageButton  x:Name="SingleClick_EndingUpModule" Tag="EndingUpModule" Style="{DynamicResource diyBgOperationBtn}"
+                                          Command="{Binding OperatorCommand}" CommandParameter="{Binding shutUp.ModulesName}">
+                    <DockPanel Style="{DynamicResource diyBgWrapPanel}" >
+                        <Image Style="{DynamicResource diyImageStyle}" Source="{Binding shutUp.ImageLogo}" /> 
+                        <Label x:Name="lblShutUp"  Content="{Binding shutUp.LabelText}"  Style="{DynamicResource diylblStatusStyle}" FontSize="{Binding fontSizeModel.normal}" />
+                    </DockPanel>
+                </local:DiyMainPageButton>
+            
+                
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

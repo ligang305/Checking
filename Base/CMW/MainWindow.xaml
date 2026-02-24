@@ -1,0 +1,18 @@
+﻿<Window  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CMW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:diyControl="clr-namespace:BGUserControl;assembly=BGUserControl"
+        xmlns:local="clr-namespace:CMW"
+        mc:Ignorable="d" SizeToContent="Manual"
+        Title="CMW"  WindowStartupLocation="CenterScreen" >
+    <Window.Resources>
+
+    </Window.Resources>
+    <Viewbox x:Name="MainViewBox" Stretch="Fill">
+      
+    </Viewbox>
+</Window>

@@ -1,0 +1,19 @@
+﻿<local:BaseWindows x:Class="BGUserControl.DiyAlarmLightLamb"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BGUserControl"
+             mc:Ignorable="d" >
+    <Grid x:Name="MainGrid"> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="SignalImage" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource lightLampGreen}"/>
+        <Label x:Name="lblSignalName" Content="{Binding SignalName}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Red" />
+    </Grid>
+</local:BaseWindows>
