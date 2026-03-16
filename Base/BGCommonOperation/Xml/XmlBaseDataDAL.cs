@@ -9,15 +9,6 @@ using System.Reflection;
 
 namespace BGCommonOperation
 {
-    ///<summary>
-    ///--------------------------------------------------
-    /// Copyright (C) 2018-2020 中广核贝谷科技有限公司
-    /// 编写者：zhuzhiwu
-    /// 文件名：XmlBaseDataDAL
-    /// 功能：xml底层实现类
-    /// 编写日期：20181213
-    ///--------------------------------------------------
-    ///</summary>
     public class XmlBaseDataDAL : BaseInstance<XmlBaseDataDAL>
     {
         
