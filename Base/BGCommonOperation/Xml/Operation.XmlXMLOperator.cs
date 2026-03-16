@@ -3,15 +3,7 @@ using System.Data;
 using System.IO;
 using System.Xml;
 using System;
-///<summary>
-///------------------------中广核贝谷科技有限公司--------------------------
-/// Copyright (C) 2019-2020 
-/// 文件名：XMLOperator.cs
-/// 编写者：朱志武
-/// 功能：公用方法类
-/// 编写日期：2019-12-30
-///--------------------------------------------------
-///</summary>
+
 namespace CMW.Common.Utilities
 {
     /// <summary>XMLOperator 类提供对 XML 数据的读写</summary>
