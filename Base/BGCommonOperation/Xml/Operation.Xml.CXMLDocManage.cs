@@ -8,16 +8,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml;
-
-///<summary>
-///--------------------------------------------------
-/// Copyright (C) 2015-2016 中广核贝谷科技有限公司
-/// 文件名：CXMLDocManage.cs
-/// 编写者：zhuzhiwu
-/// 功能：公用方法类
-/// 编写日期：20200111
-/// ///--------------------------------------------------
-///</summary>
 namespace CMW.Common.Utilities
 {
     public class CXMLDocManage
