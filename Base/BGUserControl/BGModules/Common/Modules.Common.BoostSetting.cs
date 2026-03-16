@@ -24,7 +24,7 @@ using BG_WorkFlow;
 namespace BGUserControl
 {
     [Export("ContentPage", typeof(BaseModules))]
-    [CustomExportMetadata(1,Modules.BegoodBoostSettingModule, "贝谷-达胜直线加速器", "ZZW", "1.0.0")]
+    [CustomExportMetadata(1,Modules.BegoodBoostSettingModule, "直线加速器", "ZZW", "1.0.0")]
     public class BegoodBoostSettingModule : BaseModules
     {
         Grid _MainGrid = new Grid();
