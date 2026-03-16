@@ -514,7 +514,7 @@ namespace BG_Entities
         /// </summary>
         public const string CombinedMovement_BoostSetting = "CombinedMovement_BoostSetting";
         /// <summary>
-        /// 贝谷加速器设置模块
+        /// 加速器设置模块
         /// </summary>
         public const string BegoodBoostSettingModule = "BegoodBoostSettingModule";
         /// <summary>
