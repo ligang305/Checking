@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A7B3970D-08F0-48A2-A74B-0A4391CECE3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExeBaseModules</RootNamespace>
+    <AssemblyName>ExeBaseModules</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\CMW_OUTPUT\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\CMW_OUTPUT\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BGLogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CMW_OUTPUT\BGLogs.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExeBaseModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BGCommonOperation\CMW.Common.Utilities.csproj">
+      <Project>{27444610-0930-4f50-a25b-4aeb4b0f7e2c}</Project>
+      <Name>CMW.Common.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGCommunication\BGCommunication.csproj">
+      <Project>{1ebd915c-409c-47c5-bb7f-defc05727d8c}</Project>
+      <Name>BGCommunication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGDAL\BGDAL.csproj">
+      <Project>{4addc465-49d2-4053-9abc-27902e30160f}</Project>
+      <Name>BGDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGModel\BGModel.csproj">
+      <Project>{0ca06051-36e0-44a8-8dd4-048bd3bc4096}</Project>
+      <Name>BGModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGUserControl\BGUserControl.csproj">
+      <Project>{5f945592-982a-4256-bffa-4ff57c1fc0a5}</Project>
+      <Name>BGUserControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BG_Entities\BG_Entities.csproj">
+      <Project>{386F8366-73B9-45EC-8ED5-B9CBA8E291BA}</Project>
+      <Name>BG_Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BG_WebServices\BG_Services.csproj">
+      <Project>{645b93d5-826a-4648-9ed4-236eb460d470}</Project>
+      <Name>BG_Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BG_WorkFlow\BG_WorkFlow.csproj">
+      <Project>{31DBD45C-E7A6-4C1F-9BE4-C8083C96A3B9}</Project>
+      <Name>BG_WorkFlow</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
